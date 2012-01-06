@@ -13,7 +13,7 @@ end
 
 namespace :test do
 
-  Rake::TestTask.new(:unit) do |test|
+  Rake::TestTask.new(:units) do |test|
     test.libs << 'lib' << 'test'
     test.test_files = FileList["test/unit/**/*_test.rb"]
     test.verbose = true
@@ -28,5 +28,5 @@ namespace :test do
 end
 
 task :console do
-  sh "pry -I lib -r nfl.rb"
+  sh "pry -I lib/nfl -r live_update.rb"
 end
