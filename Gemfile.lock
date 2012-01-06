@@ -7,9 +7,13 @@ PATH
 GEM
   remote: http://rubygems.org/
   specs:
+    ansi (1.4.1)
     coderay (0.9.8)
+    metaclass (0.0.1)
     method_source (0.6.7)
       ruby_parser (>= 2.3.1)
+    mocha (0.10.0)
+      metaclass (~> 0.0.1)
     nokogiri (1.5.0)
     pry (0.9.7.4)
       coderay (~> 0.9.8)
@@ -22,13 +26,17 @@ GEM
     sexp_processor (3.0.10)
     shoulda (2.11.3)
     slop (2.1.0)
+    turn (0.8.3)
+      ansi
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   bundler
+  mocha
   nfl_live_update!
   pry
   rake
   shoulda
+  turn
