@@ -56,6 +56,10 @@ module NFL
             assert_respond_to subject, :games
           end
 
+          should "have a type_string method" do
+            assert_equal "Regular Season", subject.type_string
+          end
+
         end
 
       end
