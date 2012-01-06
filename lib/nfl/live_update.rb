@@ -9,7 +9,7 @@ module NFL
   module LiveUpdate
 
     def self.score_strip
-      NFL::LiveUpdate::ScoreStrip::Games.current
+      NFL::LiveUpdate::ScoreStrip::Games.regular_season
     end
 
     def self.test_game

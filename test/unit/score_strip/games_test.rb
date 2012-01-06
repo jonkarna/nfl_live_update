@@ -11,12 +11,19 @@ module NFL
 
           setup do
             @live_update_url = NFL::LiveUpdate::ScoreStrip::Games::LIVE_UPDATE_URL
+            @post_season_url = NFL::LiveUpdate::ScoreStrip::Games::POST_SEASON_URL
           end
 
           should "be able to get the lastest regular season score strip" do
             subject.expects(:get).with(@live_update_url)
             subject.expects(:new)
-            subject.current
+            subject.regular_season
+          end
+
+          should "be able to get the post season score strip" do
+            subject.expects(:get).with(@post_season_url)
+            subject.expects(:new)
+            subject.post_season
           end
 
           should "be able to execute get requests" do
@@ -38,7 +45,7 @@ module NFL
         end
 
         context "A Games instance" do
-          subject { NFL::LiveUpdate::ScoreStrip::Games.current }
+          subject { NFL::LiveUpdate::ScoreStrip::Games.regular_season }
 
           should "respond to getter methods" do
             assert_respond_to subject, :week
