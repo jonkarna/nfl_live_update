@@ -2,6 +2,7 @@ module NFL
   module LiveUpdate
     module ScoreStrip
       class Games
+        private_class_method :new
 
         LIVE_UPDATE_URL = "http://www.nfl.com/liveupdate/scorestrip/ss.xml"
         AJAX_URL = "http://www.nfl.com/ajax/scorestrip"
