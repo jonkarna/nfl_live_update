@@ -1,0 +1,5 @@
+require './lib/nfl/live_update/game_center/game'
+require './lib/nfl/live_update/game_center/team'
+require './lib/nfl/live_update/game_center/team_score'
+require './lib/nfl/live_update/game_center/player_stat'
+require './lib/nfl/live_update/game_center/team_stat'
