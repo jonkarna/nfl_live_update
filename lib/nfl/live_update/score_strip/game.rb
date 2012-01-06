@@ -4,9 +4,9 @@ module NFL
       class Game
 
         attr_accessor :id, :gsis, :day_of_week, :time_of_day, :status,
-          :home_abbr, :home_nickname, :home_score,
-          :visitor_abbr, :visitor_nickname, :visitor_score,
-          :red_zone, :ga, :game_type, :k, :p, :network
+          :home_abbr, :home_team_name, :home_nickname, :home_score,
+          :visitor_abbr, :visitor_team_name, :visitor_nickname, :visitor_score,
+          :red_zone, :ga, :game_type, :k, :p, :network, :o
 
         attr_reader :xml
 
@@ -23,10 +23,12 @@ module NFL
           @status = attributes["q"]
 
           @home_abbr = attributes["h"]
+          @home_team_name = attributes["htn"]
           @home_nickname = attributes["hnn"]
           @home_score = attributes["hs"]
 
           @visitor_abbr = attributes["v"]
+          @visitor_team_name = attributes["vtn"]
           @visitor_nickname = attributes["vnn"]
           @visitor_score = attributes["vs"]
 
@@ -37,6 +39,7 @@ module NFL
           @k = attributes["k"]
           @p = attributes["p"]
           @network = attributes["n"]
+          @o = attributes["o"]
         end
 
         def game_type_string
