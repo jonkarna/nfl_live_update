@@ -28,6 +28,17 @@ module NFL
           @games = gms.xpath("//g").map {|g| Game.new(g) }
         end
 
+        def type_string
+          case @type
+          when "R"
+            "Regular Season"
+          when "POST"
+            "Post Season"
+          else
+            @type
+          end
+        end
+
         class << self
 
           def regular_season
