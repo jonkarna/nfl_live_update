@@ -39,26 +39,24 @@ module NFL
           @network = attributes["n"]
         end
 
-      end
-
-      private
-      def set_game_type(gt)
-        case gt
-        when "REG"
-          "Regular"
-        when "WC"
-          "Wild Card"
-        when "CON"
-          "Conference"
-        when "DIV"
-          "Division"
-        when "PRO"
-          "Pro Bowl"
-        else
-          gt
+        def game_type_string
+          case @game_type
+          when "REG"
+            "Regular"
+          when "WC"
+            "Wild Card"
+          when "CON"
+            "Conference"
+          when "DIV"
+            "Division"
+          when "PRO"
+            "Pro Bowl"
+          else
+            @game_type
+          end
         end
-      end
 
+      end
     end
   end
 end
