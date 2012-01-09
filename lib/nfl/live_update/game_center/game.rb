@@ -1,9 +1,18 @@
 module NFL
   module LiveUpdate
     module GameCenter
-      class Game
 
-        attr_accessor :home, :away, :json
+      class GameParser < HTTParty::Parser
+        SupportedFormats.merge!("text/plain" => :json)
+      end
+
+      class Game
+        include HTTParty
+        base_uri "http://www.nfl.com/liveupdate/game-center"
+        parser NFL::LiveUpdate::GameCenter::GameParser
+
+        attr_accessor :home, :away, :json,
+          :next_update, :id
 
         def initialize(json)
           @next_update = json.delete("nextupdate")
@@ -19,15 +28,19 @@ module NFL
 
         class << self
 
-          def test_game
-            eid = "2011122500"
-            url = "http://www.nfl.com/liveupdate/game-center/#{eid}/#{eid}_gtd.json"
-            new(JSON.parse(open(url).readlines.join))
+          def find(id)
+            new(get(relative_url(id)))
+          end
+
+          private
+          def relative_url(id)
+            "/#{id}/#{id}_gtd.json"
           end
 
         end
 
       end
+
     end
   end
 end
