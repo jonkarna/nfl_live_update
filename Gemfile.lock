@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nfl_live_update (0.0.2)
+    nfl_live_update (0.0.3)
       httparty
       nokogiri
 
