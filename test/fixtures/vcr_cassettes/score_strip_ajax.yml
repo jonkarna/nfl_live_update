@@ -1,0 +1,62 @@
+---
+- !ruby/struct:VCR::HTTPInteraction
+  request: !ruby/struct:VCR::Request
+    method: :get
+    uri: http://www.nfl.com:80/ajax/scorestrip?season=2011&seasonType=REG&week=1
+    body: 
+    headers: 
+  response: !ruby/struct:VCR::Response
+    status: !ruby/struct:VCR::ResponseStatus
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - text/xml;charset=ISO-8859-1
+      content-language:
+      - en-US
+      cache-control:
+      - max-age=238
+      expires:
+      - Mon, 09 Jan 2012 01:33:54 GMT
+      date:
+      - Mon, 09 Jan 2012 01:29:56 GMT
+      content-length:
+      - '2434'
+      connection:
+      - keep-alive
+      x-akamai-edgescape:
+      - country_code=US
+    body: ! '<?xml version="1.0" encoding="UTF-8"?>
+
+      <ss><gms gd="0" w="1" y="2011" t="R"><g eid="2011090800" gsis="55164" d="Thu"
+      t="8:30" q="F" k="" h="GB" hnn="packers" hs="42" v="NO" vnn="saints" vs="34"
+      p="" rz="" ga="" gt="REG"/><g eid="2011091100" gsis="55165" d="Sun" t="1:00"
+      q="F" k="" h="BAL" hnn="ravens" hs="35" v="PIT" vnn="steelers" vs="7" p="" rz=""
+      ga="" gt="REG"/><g eid="2011091101" gsis="55167" d="Sun" t="1:00" q="F" k=""
+      h="CLE" hnn="browns" hs="17" v="CIN" vnn="bengals" vs="27" p="" rz="" ga=""
+      gt="REG"/><g eid="2011091102" gsis="55168" d="Sun" t="1:00" q="F" k="" h="HOU"
+      hnn="texans" hs="34" v="IND" vnn="colts" vs="7" p="" rz="" ga="" gt="REG"/><g
+      eid="2011091103" gsis="55169" d="Sun" t="1:00" q="F" k="" h="JAC" hnn="jaguars"
+      hs="16" v="TEN" vnn="titans" vs="14" p="" rz="" ga="" gt="REG"/><g eid="2011091104"
+      gsis="55170" d="Sun" t="1:00" q="F" k="" h="KC" hnn="chiefs" hs="7" v="BUF"
+      vnn="bills" vs="41" p="" rz="" ga="" gt="REG"/><g eid="2011091105" gsis="55166"
+      d="Sun" t="1:00" q="F" k="" h="CHI" hnn="bears" hs="30" v="ATL" vnn="falcons"
+      vs="12" p="" rz="" ga="" gt="REG"/><g eid="2011091106" gsis="55172" d="Sun"
+      t="1:00" q="F" k="" h="TB" hnn="buccaneers" hs="20" v="DET" vnn="lions" vs="27"
+      p="" rz="" ga="" gt="REG"/><g eid="2011091107" gsis="55171" d="Sun" t="1:00"
+      q="F" k="" h="STL" hnn="rams" hs="13" v="PHI" vnn="eagles" vs="31" p="" rz=""
+      ga="" gt="REG"/><g eid="2011091108" gsis="55176" d="Sun" t="4:15" q="F" k=""
+      h="WAS" hnn="redskins" hs="28" v="NYG" vnn="giants" vs="14" p="" rz="" ga=""
+      gt="REG"/><g eid="2011091109" gsis="55173" d="Sun" t="4:15" q="F" k="" h="ARI"
+      hnn="cardinals" hs="28" v="CAR" vnn="panthers" vs="21" p="" rz="" ga="" gt="REG"/><g
+      eid="2011091110" gsis="55175" d="Sun" t="4:15" q="F" k="" h="SF" hnn="49ers"
+      hs="33" v="SEA" vnn="seahawks" vs="17" p="" rz="" ga="" gt="REG"/><g eid="2011091111"
+      gsis="55174" d="Sun" t="4:15" q="F" k="" h="SD" hnn="chargers" hs="24" v="MIN"
+      vnn="vikings" vs="17" p="" rz="" ga="" gt="REG"/><g eid="2011091112" gsis="55177"
+      d="Sun" t="8:20" q="F" k="" h="NYJ" hnn="jets" hs="27" v="DAL" vnn="cowboys"
+      vs="24" p="" rz="" ga="" gt="REG"/><g eid="2011091200" gsis="55178" d="Mon"
+      t="7:00" q="F" k="" h="MIA" hnn="dolphins" hs="24" v="NE" vnn="patriots" vs="38"
+      p="" rz="" ga="" gt="REG"/><g eid="2011091201" gsis="55179" d="Mon" t="10:15"
+      q="F" k="" h="DEN" hnn="broncos" hs="20" v="OAK" vnn="raiders" vs="23" p=""
+      rz="" ga="" gt="REG"/></gms></ss>'
+    http_version: '1.1'
