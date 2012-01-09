@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
 
   s.rubyforge_project = "nfl_live_update"
 
+  s.add_runtime_dependency "httparty"
   s.add_runtime_dependency "nokogiri"
 
   s.add_development_dependency "rake"
@@ -21,6 +22,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency "shoulda"
   s.add_development_dependency "mocha"
   s.add_development_dependency "turn"
+  s.add_development_dependency "vcr"
+  s.add_development_dependency "webmock"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
