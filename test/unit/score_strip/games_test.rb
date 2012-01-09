@@ -9,33 +9,23 @@ module NFL
         context "The Games Class" do
           subject { NFL::LiveUpdate::ScoreStrip::Games }
 
-          setup do
-            @live_update_url = NFL::LiveUpdate::ScoreStrip::Games::LIVE_UPDATE_URL
-            @post_season_url = NFL::LiveUpdate::ScoreStrip::Games::POST_SEASON_URL
-          end
-
           should "be able to get the lastest regular season score strip" do
-            subject.expects(:get).with(@live_update_url)
+            subject.expects(:get).with("/ss.xml")
             subject.expects(:new)
             subject.regular_season
           end
 
           should "be able to get the post season score strip" do
-            subject.expects(:get).with(@post_season_url)
+            subject.expects(:get).with("/postseason/ss.xml")
             subject.expects(:new)
             subject.post_season
           end
 
-          should "be able to execute get requests" do
-            subject.get(@live_update_url)
-          end
-
           should "be able to search for old score strips" do
-            params = {:week => 1, :season => 2011, :season_type => "REG"}
-            subject.expects(:url).with(params)
-            subject.expects(:get)
-            subject.expects(:new)
-            subject.where(params)
+            VCR.use_cassette("score_strip_ajax") do
+              params = {:week => 1, :season => 2011, :season_type => "REG"}
+              subject.where(params)
+            end
           end
 
           should "be able to construct urls for retreiving old score strips" do
@@ -45,7 +35,11 @@ module NFL
         end
 
         context "A Games instance" do
-          subject { NFL::LiveUpdate::ScoreStrip::Games.regular_season }
+          subject do
+            VCR.use_cassette("score_strip_regular_season") do
+              NFL::LiveUpdate::ScoreStrip::Games.regular_season
+            end
+          end
 
           should "respond to getter methods" do
             assert_respond_to subject, :week
