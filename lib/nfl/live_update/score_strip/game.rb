@@ -59,6 +59,10 @@ module NFL
           end
         end
 
+        def game_center
+          NFL::LiveUpdate::GameCenter::Game.find(id)
+        end
+
       end
     end
   end
