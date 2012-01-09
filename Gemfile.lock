@@ -2,18 +2,26 @@ PATH
   remote: .
   specs:
     nfl_live_update (0.0.2)
+      httparty
       nokogiri
 
 GEM
   remote: http://rubygems.org/
   specs:
+    addressable (2.2.6)
     ansi (1.4.1)
     coderay (0.9.8)
+    crack (0.3.1)
+    httparty (0.8.1)
+      multi_json
+      multi_xml
     metaclass (0.0.1)
     method_source (0.6.7)
       ruby_parser (>= 2.3.1)
     mocha (0.10.0)
       metaclass (~> 0.0.1)
+    multi_json (1.0.4)
+    multi_xml (0.4.1)
     nokogiri (1.5.0)
     pry (0.9.7.4)
       coderay (~> 0.9.8)
@@ -28,6 +36,10 @@ GEM
     slop (2.1.0)
     turn (0.8.3)
       ansi
+    vcr (1.11.3)
+    webmock (1.7.10)
+      addressable (~> 2.2, > 2.2.5)
+      crack (>= 0.1.7)
 
 PLATFORMS
   ruby
@@ -40,3 +52,5 @@ DEPENDENCIES
   rake
   shoulda
   turn
+  vcr
+  webmock
