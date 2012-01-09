@@ -1,11 +1,18 @@
 module NFL
   module LiveUpdate
     module ScoreStrip
-      class Games
-        private_class_method :new
 
-        LIVE_UPDATE_URL = "http://www.nfl.com/liveupdate/scorestrip/ss.xml"
-        POST_SEASON_URL = "http://www.nfl.com/liveupdate/scorestrip/postseason/ss.xml"
+      class GamesParser < HTTParty::Parser
+        def xml
+          Nokogiri::XML(body)
+        end
+      end
+
+      class Games
+        include HTTParty
+        base_uri "http://www.nfl.com/liveupdate/scorestrip"
+        parser NFL::LiveUpdate::ScoreStrip::GamesParser
+
         AJAX_URL = "http://www.nfl.com/ajax/scorestrip"
 
         attr_reader :week, :year, :type, :gd, :bph, :games
@@ -27,6 +34,7 @@ module NFL
 
           @games = gms.xpath("//g").map {|g| Game.new(g) }
         end
+        private_class_method :new
 
         def type_string
           case @type
@@ -42,11 +50,11 @@ module NFL
         class << self
 
           def regular_season
-            new(get(LIVE_UPDATE_URL))
+            new(get("/ss.xml"))
           end
 
           def post_season
-            new(get(POST_SEASON_URL))
+            new(get("/postseason/ss.xml"))
           end
 
           def url(params={})
@@ -57,16 +65,15 @@ module NFL
           end
 
           def where(params)
-            new(get(url(params)))
-          end
-
-          def get(url)
-            Nokogiri::XML(open(url))
+            ajax_url = url(params)
+            response = HTTParty.get(ajax_url)
+            new(Nokogiri::XML(response.body))
           end
 
         end
 
       end
+
     end
   end
 end
