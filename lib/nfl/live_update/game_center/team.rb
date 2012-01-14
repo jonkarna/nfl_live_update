@@ -28,10 +28,6 @@ module NFL
           end
         end
 
-        def stat_categories
-          @stats.keys
-        end
-
       end
     end
   end
