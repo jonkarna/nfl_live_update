@@ -8,10 +8,7 @@ module NFL
 
         context "A Game instance" do
           subject do
-            VCR.use_cassette("score_strip_game") do
-              games = NFL::LiveUpdate::ScoreStrip::Games.regular_season.games
-              games.last
-            end
+            score_strip.games.last
           end
 
           should "respond to getter methods" do

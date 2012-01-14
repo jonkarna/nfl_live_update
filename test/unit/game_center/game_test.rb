@@ -24,12 +24,7 @@ module NFL
 
         context "A Game" do
           subject do
-            score_strip = VCR.use_cassette("score_strip_regular_season") do
-              NFL::LiveUpdate.score_strip
-            end
-            VCR.use_cassette("game_center_game") do
-              score_strip.games.first.game_center
-            end
+            game_center
           end
 
           should "respond to getter methods" do
