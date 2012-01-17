@@ -3,7 +3,7 @@ require "nfl/live_update/version"
 
 Gem::Specification.new do |s|
   s.name        = "nfl_live_update"
-  s.version     = NFL::LiveUpdate::VERSION
+  s.version     = SemVer.find.format "%M.%m.%p"
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jon Karna"]
   s.email       = ["ipg49vv2@gmail.com"]
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "turn"
   s.add_development_dependency "vcr"
   s.add_development_dependency "webmock"
+  s.add_development_dependency "semver"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
