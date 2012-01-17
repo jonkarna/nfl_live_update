@@ -3,8 +3,8 @@ require 'nokogiri'
 require 'open-uri'
 require 'httparty'
 
-require './lib/nfl/live_update/score_strip'
-require './lib/nfl/live_update/game_center'
+require 'nfl/live_update/score_strip'
+require 'nfl/live_update/game_center'
 
 module NFL
   module LiveUpdate
