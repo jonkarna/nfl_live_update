@@ -1,5 +1,5 @@
 $:.push File.expand_path("../lib", __FILE__)
-require "nfl/live_update/version"
+require 'semver'
 
 Gem::Specification.new do |s|
   s.name        = "nfl_live_update"
