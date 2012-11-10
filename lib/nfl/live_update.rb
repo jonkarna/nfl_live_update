@@ -2,6 +2,7 @@ require 'json'
 require 'nokogiri'
 require 'open-uri'
 require 'httparty'
+require 'active_support/core_ext'
 
 require 'nfl/live_update/score_strip'
 require 'nfl/live_update/game_center'
