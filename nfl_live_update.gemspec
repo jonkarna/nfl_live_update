@@ -1,9 +1,9 @@
 $:.push File.expand_path("../lib", __FILE__)
-require 'semver'
+require "nfl/live_update/version"
 
 Gem::Specification.new do |s|
   s.name        = "nfl_live_update"
-  s.version     = SemVer.find.format "%M.%m.%p"
+  s.version     = NFL::LiveUpdate::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jon Karna"]
   s.email       = ["ipg49vv2@gmail.com"]
@@ -15,6 +15,8 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency "httparty"
   s.add_runtime_dependency "nokogiri"
+  s.add_runtime_dependency "i18n"
+  s.add_runtime_dependency "activesupport", "3.1.3"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "pry"
@@ -24,7 +26,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "turn"
   s.add_development_dependency "vcr"
   s.add_development_dependency "webmock"
-  s.add_development_dependency "semver"
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
