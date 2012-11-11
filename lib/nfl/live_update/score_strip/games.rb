@@ -18,6 +18,8 @@ module NFL
         attr_reader :week, :year, :type, :gd, :bph, :games
 
         def initialize(xml)
+          @xml = xml.dup
+
           gms = xml.xpath("//ss//gms").first
 
           attributes = gms.attributes
@@ -47,6 +49,18 @@ module NFL
           end
         end
 
+        def raw_xml
+          @xml
+        end
+
+        def raw_xml_to_hash
+          Hash.from_xml(@xml)
+        end
+
+        def raw_xml_to_json
+          raw_xml_to_hash.to_json
+        end
+
         class << self
 
           def regular_season
@@ -65,9 +79,11 @@ module NFL
           end
 
           def where(params)
-            ajax_url = url(params)
-            response = HTTParty.get(ajax_url)
-            new(Nokogiri::XML(response.body))
+            new(where_xml(params))
+          end
+
+          def where_xml(params)
+            get(url(params))
           end
 
         end
